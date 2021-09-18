@@ -1,0 +1,32 @@
+----------------- Options ---------------
+               batch_size: 1                             
+          checkpoints_dir: [path_to_saved_model]         	[default: ./checkpoints]
+                conv_type: gate                          
+                 dataroot: [path_to_dataset]             	[default: None]
+             dataset_mode: brain                         
+                    epoch: latest                        
+                  gpu_ids: 0                             
+                init_gain: 0.02                          
+                init_type: normal                        
+                 input_nc: 6                             	[default: 3]
+                  isTrain: False                         	[default: None]
+            lambda_lesion: 10                            
+               lambda_lgc: 0.1                           
+            lambda_tissue: 1                             
+               lgc_layers: enc4_6                        
+                load_iter: 0                             	[default: 0]
+                    model: lesion_inpaint_lgc            	[default: test]
+                     name: ixi_gate_lgc                  	[default: experiment_name]
+              net_inpaint: gate                          
+                     norm: batch                         
+              num_threads: 4                             
+                output_nc: 3                             
+              pad_to_size: -1                            
+                    phase: test                          
+              print_stats: False                         
+               raw_output: False                         
+           serial_batches: False                         
+                   suffix:                               
+                  verbose: False                         
+                     view: ax                            
+----------------- End -------------------

@@ -1,0 +1,22 @@
+set -ex
+python3 ../train.py \
+--dataroot [path_to_dataset] \
+--checkpoints_dir [path_to_saved_weights] \
+--gpu_ids 0 \
+--name [saved_name] \
+--model lesion_inpaint_lgc \
+--input_nc 6 \
+--output_nc 3 \
+--init_type kaiming \
+--dataset_mode brain \
+--num_threads 8 \
+--batch_size 24 \
+--beta1 0.99 \
+--lr 0.0001 \
+--lambda_lgc 0.1 \
+--lambda_lesion 10 \
+--lambda_tissue 1 \
+--n_epochs 500 \
+--print_freq 1000 \
+--save_latest_freq 5000 \
+--save_epoch_freq 100 \
