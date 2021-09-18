@@ -1,16 +1,20 @@
 # LG-Net
 
-Official implementation of LG-Net (Code to be released), MICCAI 2021
+Official PyTorch implementation of LG-Net: Lesion Gate Network for Multiple Sclerosis Lesion Inpainting, MICCAI 2021
 
-Paper: (To be released)
+Paper: ![LG-Net](http://doi.org/10.1007/978-3-030-87234-2_62)
 
 
 
-<!-- ![LG-Net](./images/?.png) -->
+<!-- ![LG-Net](./LG_Net.png) -->
 
 ## Dependencies
 
-[TBD]
+* Python >= 3.6
+
+*Pytorch version*
+* torch >= 1.5.0
+* torchvision >= 0.6.0
 
 ## Data
 
@@ -26,10 +30,10 @@ Paper: (To be released)
 Please refer to the training script in the scripts folder
 ```
 python3 ../train.py \
---dataroot ~/Lesion_Inpaint/Dataset/IXI_T1/train/tensor_ax/ \
---checkpoints_dir ../checkpoints \
+--dataroot [path_to_dataset] \
+--checkpoints_dir [path_to_saved_weights] \
 --gpu_ids 0 \
---name ixi_gate_lgc \
+--name [saved_name] \
 --model lesion_inpaint_lgc \
 --input_nc 6 \
 --output_nc 3 \
@@ -39,32 +43,42 @@ python3 ../train.py \
 --batch_size 24 \
 --beta1 0.99 \
 --lr 0.0001 \
---n_epochs 50 \
---print_freq 500 \
+--lambda_lgc 0.1 \
+--lambda_lesion 10 \
+--lambda_tissue 1 \
+--n_epochs 500 \
+--print_freq 1000 \
 --save_latest_freq 5000 \
---save_epoch_freq 10 \
+--save_epoch_freq 100 \
 ```
 
-**Evaluate**
+**Test**
 Please refer to the testing script in the scripts folder
 ```
-python3 ../test_inpaint.py \
---dataroot ~/Lesion_Inpaint/Dataset/OASIS/test/ \
---checkpoints_dir ../checkpoints \
+python3 ../test.py \
+--dataroot [path_to_dataset] \
+--checkpoints_dir [path_to_saved_weights] \
 --gpu_ids 0 \
---name oasis_gate_10_1_0.1_100 \
---model lesion_inpaint_gate \
+--name ixi_gate_lgc \
+--model lesion_inpaint_lgc \
 --input_nc 6 \
 --output_nc 3 \
---norm batch \
+--pad_to_size -1 \
 --view ax
 ```
 
-<!-- Our framework heavily brought from [CycleGAN](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix). We appreciate the authors for their contributions on a great open-source framework of deep learning! -->
+<!-- Our code framework heavily brought from [CycleGAN](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix). We appreciate the authors for their contributions on a great open-source framework of deep adversarial learning! -->
 
 <!-- ## Citation
 
 If you find this repo useful in your work or research, please cite:
+@inproceedings{tang2020lgnet,
+  title={LG-Net: Lesion Gate Network for Multiple Sclerosis Lesion Inpainting},
+  author={Tang, Zihao and Cabezas, Mariano and Liu, Dongnan and Barnett, Michael and Cai, Weidong and Wang, Chenyu},
+  booktitle={International Conference on Medical Image Computing and Computer-Assisted Intervention},
+  year={2021},
+  organization={Springer}
+}
 
 ```
 
