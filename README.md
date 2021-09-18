@@ -6,7 +6,7 @@ Paper: ![LG-Net](http://doi.org/10.1007/978-3-030-87234-2_62)
 
 
 
-<!-- ![LG-Net](./LG_Net.png) -->
+<!-- ![LG-Net](LG_Net.png) -->
 
 ## Dependencies
 
